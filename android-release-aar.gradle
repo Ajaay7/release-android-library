@@ -29,7 +29,7 @@ publishing {
             groupId = groupId
             artifactId = artifactId
             version = version
-            from components.release // Ensure you have a `release` component defined
+            from components["android"] // Use the Android component instead of 'release'
             artifact androidSourcesJar
             artifact androidJavadocsJar
         }
@@ -60,4 +60,9 @@ generateRelease.dependsOn(zipRelease)
 artifacts {
     archives androidSourcesJar
     archives androidJavadocsJar
+}
+
+// Optional: Enable publishing of non-default variants if needed
+android {
+    publishNonDefault true
 }
